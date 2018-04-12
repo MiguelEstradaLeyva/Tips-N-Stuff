@@ -123,6 +123,9 @@
                                                 <state key="normal" title="Add to Calendar">
                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="pushToCalendar:" destination="Nlr-cu-QOZ" eventType="touchUpInside" id="HGZ-Qw-DPb"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -204,6 +207,14 @@
                         <viewLayoutGuide key="safeArea" id="ohq-xG-dyf"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Tip Calendar" id="S7H-8G-Qa2"/>
+                    <connections>
+                        <outlet property="DateField" destination="jm2-nJ-2qS" id="1tl-nr-KJm"/>
+                        <outlet property="NotesField" destination="9K7-7X-fZ8" id="2oQ-fR-H3z"/>
+                        <outlet property="jobField" destination="mzC-7z-vNs" id="wNb-fh-kKh"/>
+                        <outlet property="tipAmount" destination="wdb-vy-xDx" id="Ofy-SV-diy"/>
+                        <outlet property="todayTipField" destination="6Ty-Hb-cAX" id="r8M-8R-NLc"/>
+                        <outlet property="yearsTipField" destination="0Y4-Ef-yth" id="bdz-h8-KoO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NIa-4y-1tG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
