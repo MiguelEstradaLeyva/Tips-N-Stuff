@@ -12,7 +12,7 @@ class TipCalendarViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var why = "git so dumb"
+        
         // Do any additional setup after loading the view.
     }
 
