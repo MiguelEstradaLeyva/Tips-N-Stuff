@@ -19,21 +19,30 @@ class TipCalendarViewController: UIViewController {
     
     
     @IBAction func pushToCalendar(_ sender: UIButton) {
+        // look at alage to check fields 1st before you accept them add alert screens for errors
+        
         // All fields in the calendar need to be strings
         let titles: String = "Job Completed: " + jobField.text!
-        let descriptions: String = "Tip amount: $" + tipAmount.text!
+        let tip: String = "Tip amount: $" + tipAmount.text!
         let notes: String = "\nAdditional Notes: " + NotesField.text!
         
+        // make a dictionary that holds dates(key) with tip totals (value)
+        // grab the date then add a total add put it in the today's tip total field
+        // might wanna make another method to do this and just call it from this method
+        var t = Double(tipAmount.text!)
+        todaytotal += t!
+        todayTipField.text = String(todaytotal)
+        
         let dateFormatter = DateFormatter()
-        //dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        
         //'T'HH:mm:ssZZZZZ"
        // dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
         let raceDate = DateField.text
         let date = dateFormatter.date(from: raceDate!)
-       
         let date2 = Date(timeInterval: 01.0, since: date!)
-        
+        currentDate = date2
         let eventStore: EKEventStore = EKEventStore()
         // ask user for permission to their calendar so we can add a project event in the calendar
         eventStore.requestAccess(to: .event) {(granted, error) in
@@ -47,7 +56,7 @@ class TipCalendarViewController: UIViewController {
                 event.title = titles
                 event.startDate = date2
                 event.endDate = date2
-                event.notes = descriptions + notes
+                event.notes = tip + notes
                 event.calendar = eventStore.defaultCalendarForNewEvents
                 do {
                     // save the event to the ios calendar
@@ -75,9 +84,14 @@ class TipCalendarViewController: UIViewController {
         UIApplication.shared.openURL(url as URL)
     }
     
+    var currentDate = Date()
     @IBOutlet weak var todayTipField: UITextField!
     
     @IBOutlet weak var yearsTipField: UITextField!
+    
+    var todaytotal = 0.0
+    var yeartotal = 0.0;
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
