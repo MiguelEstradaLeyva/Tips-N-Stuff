@@ -20,10 +20,19 @@ class TipCalendarViewController: UIViewController {
     
     @IBAction func pushToCalendar(_ sender: UIButton) {
         // All fields in the calendar need to be strings
-        let titles: String = jobField.text!
-        let descriptions: String = tipAmount.text!
-        let locations: String = "\n " + NotesField.text!
-        let DateTime = Date()                          // the date the tip is made
+        let titles: String = "Job Completed: " + jobField.text!
+        let descriptions: String = "Tip amount: $" + tipAmount.text!
+        let notes: String = "\nAdditional Notes: " + NotesField.text!
+        
+        let dateFormatter = DateFormatter()
+        //dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        //'T'HH:mm:ssZZZZZ"
+       // dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let raceDate = DateField.text
+        let date = dateFormatter.date(from: raceDate!)
+       
+        let date2 = Date(timeInterval: 01.0, since: date!)
         
         let eventStore: EKEventStore = EKEventStore()
         // ask user for permission to their calendar so we can add a project event in the calendar
@@ -36,9 +45,9 @@ class TipCalendarViewController: UIViewController {
                 let event: EKEvent = EKEvent (eventStore: eventStore)
                 // adding project fields to the actual calendar
                 event.title = titles
-                event.startDate = DateTime
-                event.endDate = DateTime
-                event.notes = descriptions + locations
+                event.startDate = date2
+                event.endDate = date2
+                event.notes = descriptions + notes
                 event.calendar = eventStore.defaultCalendarForNewEvents
                 do {
                     // save the event to the ios calendar
@@ -93,3 +102,23 @@ class TipCalendarViewController: UIViewController {
     */
 
 }
+
+/*
+ let date1 = Date()
+ let calendar = Calendar.current
+ let hour = calendar.component(.hour, from: date1)
+ let minutes = calendar.component(.minute, from: date1)
+ let seconds = calendar.component(.second, from: date1)
+ 
+ let dateFormatter = DateFormatter()
+ //dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.S"
+ dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.A"
+ dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+ /*  let raceDate = DateField.text! +  " " + String(describing: hour) + ":" + String(describing: minutes) +
+ ":" + String(describing: seconds)
+ let date = dateFormatter.date(from: raceDate)
+ // let minimumDate = NSDate()
+ */
+ let raceDate = DateField.text
+ let date = dateFormatter.date(from: raceDate!)
+ */
