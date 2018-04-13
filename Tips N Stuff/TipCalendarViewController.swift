@@ -29,6 +29,9 @@ class TipCalendarViewController: UIViewController {
         // make a dictionary that holds dates(key) with tip totals (value)
         // grab the date then add a total add put it in the today's tip total field
         // might wanna make another method to do this and just call it from this method
+        // dayTot(date: date 2, Double: todaytotal)
+        // check if date is in dictionary if is add to it else add the date to the dict. and
+        // start a new total
         var t = Double(tipAmount.text!)
         todaytotal += t!
         todayTipField.text = String(todaytotal)
