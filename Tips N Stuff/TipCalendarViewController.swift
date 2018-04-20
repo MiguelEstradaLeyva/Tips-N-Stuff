@@ -14,6 +14,7 @@ import EventKitUI
 
 class TipCalendarViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var cal: UIButton!
     @IBOutlet weak var jobField: UITextField!
     @IBOutlet weak var tipAmount: UITextField!
     @IBOutlet weak var DateField: UITextField!
@@ -38,9 +39,24 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         // format picker for date field
         picker.datePickerMode = .dateAndTime
     }
+    
+    func check(sender: UITextField){
+        if((jobField.text?.isEmpty)! || (DateField.text?.isEmpty)!){
+            cal.isEnabled = false
+            let alert = UIAlertController(title: "Please Fill Out all Fields", message: "There must be   Job tiltle and a date before continuing.", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+        }
+        else{
+            cal.isEnabled = true
+        }
+    }
     // when the user presses done after they have choosen a date it locks it in and goes
     // back to the main screen
     @objc func donePressed(){
+        cal.isEnabled = true
         let d = picker.date
         let calendar = NSCalendar.current
         let day: String = (String)(calendar.component(Calendar.Component.day, from: d))
@@ -63,13 +79,34 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
     @IBAction func pushToCalendar(_ sender: UIButton) {
         // look at alage app to check fields 1st before you accept them add alert screens for errors
         
+        setupAddTargetIsNotEmptyTextFields()
+        /*
+        if((jobField.text?.isEmpty)! && (DateField.text?.isEmpty)!){
+            cal.isEnabled = false
+            let alert = UIAlertController(title: "Please Fill Out all Fields", message: "There must be   Job tiltle and a date before continuing.", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+        }
+        else{
+            cal.isEnabled = true
+        }
+        */
+        
         let d = picker.date
         let calendar = NSCalendar.current
         let day: String = (String)(calendar.component(Calendar.Component.day, from: d))
         let month: String = (String)(calendar.component(Calendar.Component.month, from: d))
         let year: String = (String)(calendar.component(Calendar.Component.year, from: d))
         let dateKey: String = year + "/" + month + "/" + day
-        let tipAt: Double = (Double)(self.tipAmount.text!)!
+        let tipAt: Double
+        if(tipAmount.text?.isEmpty == true){
+             tipAt = 0.0
+        }
+        else{
+             tipAt = (Double)(self.tipAmount.text!)!
+        }
         
         if !(money.keys.contains(dateKey)){
         //money.updateValue(tipAt, forKey: dateKey)
@@ -171,6 +208,10 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tipAmount.delegate = self
+        tipAmount.keyboardType = .numbersAndPunctuation
+        //setupAddTargetIsNotEmptyTextFields()
+        cal.isEnabled =  false
         createDatePicker()
         UserDefaults.standard.set(money, forKey: "money")
         // Do any additional setup after loading the view.
@@ -187,12 +228,50 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         {
     return false
         }
+    else if textField == tipAmount{
+        // only allow digits and a "." in the text field
+        let allowedCharacters = CharacterSet(charactersIn:".0123456789").inverted
+        let components = string.components(separatedBy: allowedCharacters)
+        let filtered = components.joined(separator: "")
+        // only want to allow 1 decimal point in the string so we can convert it to a double
+        if (textField.text?.contains("."))!, string.contains(".") {
+            return false
+        }
+        return string == filtered
+    }
     else
         {
     return true
         }
     }
 
+    func setupAddTargetIsNotEmptyTextFields() {
+        
+        if(!((jobField.text?.isEmpty)! && (tipAmount.text?.isEmpty)! && (DateField.text?.isEmpty)!)){
+            cal.isEnabled = true
+        }
+        else{
+            cal.isEnabled = false
+        }
+    }
+    
+    @objc func textFieldsIsNotEmpty(sender: UITextField) {
+        
+        sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+        
+        guard
+            let name = jobField.text, !name.isEmpty,
+            let email = tipAmount.text, !email.isEmpty,
+            let password = DateField.text, !password.isEmpty
+        
+            else
+        {
+            cal.isUserInteractionEnabled = true
+            return
+        }
+        // enable okButton if all conditions are met
+        cal.isUserInteractionEnabled = false
+    }
     
     /*
     // MARK: - Navigation
