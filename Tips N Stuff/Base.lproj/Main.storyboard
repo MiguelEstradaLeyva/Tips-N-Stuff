@@ -391,6 +391,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.88235294119999996" green="0.34509803919999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CommunityGardenButton" translatesAutoresizingMaskIntoConstraints="NO" id="QtR-P3-xDA">
+                                <rect key="frame" x="183" y="116" width="71" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="z3y-Zd-d7f"/>
@@ -442,6 +446,9 @@
             <point key="canvasLocation" x="900.79999999999995" y="-101.64917541229386"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CommunityGardenButton" width="16" height="16"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BYa-Ys-kXd"/>
         <segue reference="fCL-Tl-1Us"/>

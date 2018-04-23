@@ -12,8 +12,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        /// test again 23
-        var a = "bob"
+        
         // Do any additional setup after loading the view.
     }
 

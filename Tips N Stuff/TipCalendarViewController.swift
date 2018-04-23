@@ -208,8 +208,12 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // testing dev don branchfcfy
-        // hi
+        tipAmount.delegate = self
+        tipAmount.keyboardType = .numbersAndPunctuation
+        //setupAddTargetIsNotEmptyTextFields()
+        cal.isEnabled =  false
+        createDatePicker()
+        UserDefaults.standard.set(money, forKey: "money")
         // Do any additional setup after loading the view.
     }
 
