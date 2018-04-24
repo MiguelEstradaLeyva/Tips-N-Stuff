@@ -69,6 +69,7 @@
 				625CF37B207D82D000849B36 /* LaunchScreen.storyboard */,
 				625CF37E207D82D000849B36 /* Info.plist */,
 				625CF376207D82D000849B36 /* Tips_N_Stuff.xcdatamodeld */,
+				C1152AC8208EB8AB00D84F99 /* PerformanceLog.swift */,
 			);
 			path = "Tips N Stuff";
 			sourceTree = "<group>";
@@ -147,6 +148,7 @@
 			files = (
 				626A60BC208EA0290025AF23 /* WorkLogViewController.swift in Sources */,
 				625CF387207D9A8B00849B36 /* TipCalendarViewController.swift in Sources */,
+				C1152AC9208EB8AB00D84F99 /* PerformanceLog.swift in Sources */,
 				625CF370207D82D000849B36 /* AppDelegate.swift in Sources */,
 				625CF378207D82D000849B36 /* Tips_N_Stuff.xcdatamodeld in Sources */,
 				625CF385207D8EA700849B36 /* HomeViewController.swift in Sources */,
