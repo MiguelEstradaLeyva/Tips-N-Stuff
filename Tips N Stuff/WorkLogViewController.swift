@@ -19,8 +19,6 @@ class WorkLogViewController: UIViewController {
     let wagePay = 0.0
     let userDef = UserDefaults.standard
     
-    var paycheck = [String: Double]()
-    
     @IBAction func calculatePay(_ sender: Any) {
         let result = (shiftHours.text?.toDouble())! * (wageHours.text?.toDouble())!
         expectedPay.text = "\(result)"
