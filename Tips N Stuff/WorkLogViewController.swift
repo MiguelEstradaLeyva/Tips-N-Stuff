@@ -25,7 +25,7 @@ class WorkLogViewController: UIViewController {
         let result = (shiftHours.text?.toDouble())! * (wageHours.text?.toDouble())!
         expectedPay.text = "\(result)"
         
-        userDef.set(result, forKey: "paycheck")
+        userDef.set(result, forKey: "paycheck") 
         let pay = userDef.double(forKey: "paycheck")
         
         totalPay.text = "\(pay)"
