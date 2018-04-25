@@ -14,8 +14,11 @@
 		625CF37D207D82D000849B36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 625CF37B207D82D000849B36 /* LaunchScreen.storyboard */; };
 		625CF385207D8EA700849B36 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625CF384207D8EA700849B36 /* HomeViewController.swift */; };
 		625CF387207D9A8B00849B36 /* TipCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625CF386207D9A8B00849B36 /* TipCalendarViewController.swift */; };
+
+		68A59F89208EB4A6009CDF71 /* TipCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A59F88208EB4A6009CDF71 /* TipCalculator.swift */; };
 		626A60BC208EA0290025AF23 /* WorkLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A60BB208EA0290025AF23 /* WorkLogViewController.swift */; };
 		C1A1FB5F208ED93C003A7AE6 /* performanceLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A1FB5E208ED93C003A7AE6 /* performanceLogController.swift */; };
+ 
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +31,12 @@
 		625CF37E207D82D000849B36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		625CF384207D8EA700849B36 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		625CF386207D9A8B00849B36 /* TipCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalendarViewController.swift; sourceTree = "<group>"; };
+
+		68A59F88208EB4A6009CDF71 /* TipCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalculator.swift; sourceTree = "<group>"; };
+
 		626A60BB208EA0290025AF23 /* WorkLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkLogViewController.swift; sourceTree = "<group>"; };
 		C1A1FB5E208ED93C003A7AE6 /* performanceLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = performanceLogController.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +72,12 @@
 				625CF384207D8EA700849B36 /* HomeViewController.swift */,
 				625CF386207D9A8B00849B36 /* TipCalendarViewController.swift */,
 				625CF36F207D82D000849B36 /* AppDelegate.swift */,
+
+				68A59F88208EB4A6009CDF71 /* TipCalculator.swift */,
+
 				C1A1FB5E208ED93C003A7AE6 /* performanceLogController.swift */,
 				626A60BB208EA0290025AF23 /* WorkLogViewController.swift */,
+
 				625CF373207D82D000849B36 /* Main.storyboard */,
 				625CF379207D82D000849B36 /* Assets.xcassets */,
 				625CF37B207D82D000849B36 /* LaunchScreen.storyboard */,
@@ -154,6 +165,7 @@
 				625CF370207D82D000849B36 /* AppDelegate.swift in Sources */,
 				625CF378207D82D000849B36 /* Tips_N_Stuff.xcdatamodeld in Sources */,
 				625CF385207D8EA700849B36 /* HomeViewController.swift in Sources */,
+				68A59F89208EB4A6009CDF71 /* TipCalculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
