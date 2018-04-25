@@ -5,9 +5,7 @@
 //  Created by Don Ostergaard on 4/10/18.
 //  Copyright © 2018 Don Ostergaard. All rights reserved.
 //
-
 // https://apoorv.blog/currency-format-input-uitextfield-swift/
-
 import UIKit
 import EventKit
 import EventKitUI
@@ -68,7 +66,7 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         if (money.keys.contains(dateKey)){
             let orgTip:Double = money[dateKey]!
             todayTipField.text = (String)(orgTip)
-           // getTipAmountDay()
+            // getTipAmountDay()
         }
         DateField.text = "\(picker.date)"
         self.view.endEditing(true)
@@ -81,18 +79,18 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         
         setupAddTargetIsNotEmptyTextFields()
         /*
-        if((jobField.text?.isEmpty)! && (DateField.text?.isEmpty)!){
-            cal.isEnabled = false
-            let alert = UIAlertController(title: "Please Fill Out all Fields", message: "There must be   Job tiltle and a date before continuing.", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-            self.present(alert, animated: true)
-            
-        }
-        else{
-            cal.isEnabled = true
-        }
-        */
+         if((jobField.text?.isEmpty)! && (DateField.text?.isEmpty)!){
+         cal.isEnabled = false
+         let alert = UIAlertController(title: "Please Fill Out all Fields", message: "There must be   Job tiltle and a date before continuing.", preferredStyle: .alert)
+         
+         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+         self.present(alert, animated: true)
+         
+         }
+         else{
+         cal.isEnabled = true
+         }
+         */
         
         let d = picker.date
         let calendar = NSCalendar.current
@@ -102,28 +100,28 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         let dateKey: String = year + "/" + month + "/" + day
         let tipAt: Double
         if(tipAmount.text?.isEmpty == true){
-             tipAt = 0.0
+            tipAt = 0.0
         }
         else{
-             tipAt = (Double)(self.tipAmount.text!)!
+            tipAt = (Double)(self.tipAmount.text!)!
         }
         
         if !(money.keys.contains(dateKey)){
-        //money.updateValue(tipAt, forKey: dateKey)
-        money[dateKey] = tipAt
+            //money.updateValue(tipAt, forKey: dateKey)
+            money[dateKey] = tipAt
             todayTipField.text = (String)(tipAt)
         }
         else{
             let orgTip:Double = money[dateKey]!
             todayTipField.text = (String)(orgTip)
-          getTipAmountDay()
+            getTipAmountDay()
         }
         
         // All fields in the calendar need to be strings
         let titles: String = "Job Completed: " + jobField.text!
         let tip: String = "Tip amount: $" + tipAmount.text!
         let notes: String = "\nAdditional Notes: " + NotesField.text!
-       
+        
         
         
         // make a dictionary that holds dates(key) with tip totals (value)
@@ -178,7 +176,7 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         UIApplication.shared.openURL(url as URL)
     }
     
-
+    
     @IBOutlet weak var todayTipField: UITextField!
     @IBOutlet weak var yearsTipField: UITextField!
     
@@ -187,7 +185,7 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
     
     var money = [String: Double]()
     
-   // UserDefaults.standard.set(money, forKey: "money")
+    // UserDefaults.standard.set(money, forKey: "money")
     
     func getTipAmountDay(){
         let d = picker.date
@@ -208,10 +206,15 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // testing dev don branchfcfy
+        tipAmount.delegate = self
+        tipAmount.keyboardType = .numbersAndPunctuation
+        //setupAddTargetIsNotEmptyTextFields()
+        cal.isEnabled =  false
+        createDatePicker()
+        UserDefaults.standard.set(money, forKey: "money")
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -219,27 +222,27 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
     
     // this will ensure that the user has to use the date picker and cant input wrong dates
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    if textField == DateField
+        if textField == DateField
         {
-    return false
-        }
-    else if textField == tipAmount{
-        // only allow digits and a "." in the text field
-        let allowedCharacters = CharacterSet(charactersIn:".0123456789").inverted
-        let components = string.components(separatedBy: allowedCharacters)
-        let filtered = components.joined(separator: "")
-        // only want to allow 1 decimal point in the string so we can convert it to a double
-        if (textField.text?.contains("."))!, string.contains(".") {
             return false
         }
-        return string == filtered
-    }
-    else
+        else if textField == tipAmount{
+            // only allow digits and a "." in the text field
+            let allowedCharacters = CharacterSet(charactersIn:".0123456789").inverted
+            let components = string.components(separatedBy: allowedCharacters)
+            let filtered = components.joined(separator: "")
+            // only want to allow 1 decimal point in the string so we can convert it to a double
+            if (textField.text?.contains("."))!, string.contains(".") {
+                return false
+            }
+            return string == filtered
+        }
+        else
         {
-    return true
+            return true
         }
     }
-
+    
     func setupAddTargetIsNotEmptyTextFields() {
         
         if(!((jobField.text?.isEmpty)! && (tipAmount.text?.isEmpty)! && (DateField.text?.isEmpty)!)){
@@ -255,10 +258,10 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
         
         guard
-            let name = jobField.text, !name.isEmpty,
-            let email = tipAmount.text, !email.isEmpty,
-            let password = DateField.text, !password.isEmpty
-        
+            let job = jobField.text, !job.isEmpty,
+            let tip = tipAmount.text, !tip.isEmpty,
+            let dt = DateField.text, !dt.isEmpty
+            
             else
         {
             cal.isUserInteractionEnabled = true
@@ -269,33 +272,12 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
-
-/*
- let date1 = Date()
- let calendar = Calendar.current
- let hour = calendar.component(.hour, from: date1)
- let minutes = calendar.component(.minute, from: date1)
- let seconds = calendar.component(.second, from: date1)
- 
- let dateFormatter = DateFormatter()
- //dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.S"
- dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.A"
- dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
- /*  let raceDate = DateField.text! +  " " + String(describing: hour) + ":" + String(describing: minutes) +
- ":" + String(describing: seconds)
- let date = dateFormatter.date(from: raceDate)
- // let minimumDate = NSDate()
- */
- let raceDate = DateField.text
- let date = dateFormatter.date(from: raceDate!)
- */
