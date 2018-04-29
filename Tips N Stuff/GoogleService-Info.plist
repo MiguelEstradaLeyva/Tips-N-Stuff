@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>817959297693-h5binei6grkp05q9kmpgs5vbcib3gv1h.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.817959297693-h5binei6grkp05q9kmpgs5vbcib3gv1h</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC3Ip_ij2SqTh5cbfL3HcpH-EMuBbncmuk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>817959297693</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>aaron.diaz.Tips-N-Stuff</string>
+	<key>PROJECT_ID</key>
+	<string>tipsnstuff-99e6f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tipsnstuff-99e6f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:817959297693:ios:bf658cbf8c0a4927</string>
+	<key>DATABASE_URL</key>
+	<string>https://tipsnstuff-99e6f.firebaseio.com</string>
+</dict>
+</plist>

@@ -14,11 +14,10 @@
 		625CF37D207D82D000849B36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 625CF37B207D82D000849B36 /* LaunchScreen.storyboard */; };
 		625CF385207D8EA700849B36 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625CF384207D8EA700849B36 /* HomeViewController.swift */; };
 		625CF387207D9A8B00849B36 /* TipCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625CF386207D9A8B00849B36 /* TipCalendarViewController.swift */; };
-
-		68A59F89208EB4A6009CDF71 /* TipCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A59F88208EB4A6009CDF71 /* TipCalculator.swift */; };
 		626A60BC208EA0290025AF23 /* WorkLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A60BB208EA0290025AF23 /* WorkLogViewController.swift */; };
+		62F91CE22091477100553F79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62F91CE12091477100553F79 /* GoogleService-Info.plist */; };
+		68A59F89208EB4A6009CDF71 /* TipCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A59F88208EB4A6009CDF71 /* TipCalculator.swift */; };
 		C1A1FB5F208ED93C003A7AE6 /* performanceLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A1FB5E208ED93C003A7AE6 /* performanceLogController.swift */; };
- 
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,12 +30,10 @@
 		625CF37E207D82D000849B36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		625CF384207D8EA700849B36 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		625CF386207D9A8B00849B36 /* TipCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalendarViewController.swift; sourceTree = "<group>"; };
-
-		68A59F88208EB4A6009CDF71 /* TipCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalculator.swift; sourceTree = "<group>"; };
-
 		626A60BB208EA0290025AF23 /* WorkLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkLogViewController.swift; sourceTree = "<group>"; };
+		62F91CE12091477100553F79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		68A59F88208EB4A6009CDF71 /* TipCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalculator.swift; sourceTree = "<group>"; };
 		C1A1FB5E208ED93C003A7AE6 /* performanceLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = performanceLogController.swift; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,11 +47,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4712EFEAA2922AC2AB8F5A10 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		625CF363207D82D000849B36 = {
 			isa = PBXGroup;
 			children = (
 				625CF36E207D82D000849B36 /* Tips N Stuff */,
 				625CF36D207D82D000849B36 /* Products */,
+				4712EFEAA2922AC2AB8F5A10 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,16 +77,14 @@
 				625CF384207D8EA700849B36 /* HomeViewController.swift */,
 				625CF386207D9A8B00849B36 /* TipCalendarViewController.swift */,
 				625CF36F207D82D000849B36 /* AppDelegate.swift */,
-
 				68A59F88208EB4A6009CDF71 /* TipCalculator.swift */,
-
 				C1A1FB5E208ED93C003A7AE6 /* performanceLogController.swift */,
 				626A60BB208EA0290025AF23 /* WorkLogViewController.swift */,
-
 				625CF373207D82D000849B36 /* Main.storyboard */,
 				625CF379207D82D000849B36 /* Assets.xcassets */,
 				625CF37B207D82D000849B36 /* LaunchScreen.storyboard */,
 				625CF37E207D82D000849B36 /* Info.plist */,
+				62F91CE12091477100553F79 /* GoogleService-Info.plist */,
 				625CF376207D82D000849B36 /* Tips_N_Stuff.xcdatamodeld */,
 			);
 			path = "Tips N Stuff";
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				625CF37D207D82D000849B36 /* LaunchScreen.storyboard in Resources */,
+				62F91CE22091477100553F79 /* GoogleService-Info.plist in Resources */,
 				625CF37A207D82D000849B36 /* Assets.xcassets in Resources */,
 				625CF375207D82D000849B36 /* Main.storyboard in Resources */,
 			);
