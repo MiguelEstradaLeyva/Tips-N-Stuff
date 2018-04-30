@@ -18,7 +18,7 @@ class TipCalculator: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var TipCustomLabel: UILabel!
     @IBOutlet weak var TotalCustomLabel: UILabel!
     @IBOutlet weak var InputTextField: UITextField!
-    
+    //something
     let decimal100 = NSDecimalNumber(string: "100.0")
     let decimal15Percent = NSDecimalNumber(string: "0.15")
     override func viewDidLoad() {
