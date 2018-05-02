@@ -232,6 +232,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mSi-cp-gOy">
+                                <rect key="frame" x="0.0" y="145" width="375" height="383"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="5qi-oI-txi">
                                 <rect key="frame" x="20" y="166" width="335" height="335"/>
                                 <subviews>
@@ -249,7 +253,9 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <segue destination="Nlr-cu-QOZ" kind="show" id="h3C-ho-w3e"/>
@@ -271,6 +277,11 @@
                                                         <state key="normal" title="Tip Calculator">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <segue destination="Dyg-lt-zCV" kind="show" id="fix-Vf-yfZ"/>
                                                         </connections>
@@ -291,16 +302,22 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uz-HY-pXv">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                         <state key="normal" title="Perform Log">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <segue destination="9zv-Oi-pQB" kind="show" id="7E5-EL-Wox"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="mLR-AD-ank"/>
                                                     <constraint firstAttribute="width" constant="150" id="xXI-sB-8ff"/>
@@ -311,11 +328,16 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAg-ah-tKz">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                         <state key="normal" title="Work Log">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <segue destination="6Dx-hz-CWD" kind="show" id="Z10-LJ-SNI"/>
                                                         </connections>
@@ -327,8 +349,10 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
+                                        <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calc" translatesAutoresizingMaskIntoConstraints="NO" id="wH3-jN-a3f">
                                 <rect key="frame" x="252.5" y="213.5" width="55" height="55"/>
@@ -359,9 +383,12 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="mSi-cp-gOy" firstAttribute="leading" secondItem="Wtm-pE-vbS" secondAttribute="leading" id="1rg-hc-uuA"/>
                             <constraint firstItem="0tc-Iv-dMN" firstAttribute="centerX" secondItem="lAg-ah-tKz" secondAttribute="centerX" id="2pm-WM-lnt"/>
+                            <constraint firstItem="zQU-kH-fBZ" firstAttribute="top" secondItem="mSi-cp-gOy" secondAttribute="bottom" constant="-177" id="93h-C2-8s7"/>
+                            <constraint firstItem="mSi-cp-gOy" firstAttribute="trailing" secondItem="Wtm-pE-vbS" secondAttribute="trailing" id="9PE-x2-6rO"/>
                             <constraint firstItem="wH3-jN-a3f" firstAttribute="centerX" secondItem="eNc-G4-Mad" secondAttribute="centerX" id="FhL-vl-LOV"/>
                             <constraint firstItem="pdG-jr-Vfv" firstAttribute="centerY" secondItem="7uz-HY-pXv" secondAttribute="centerY" id="Heo-85-iUd"/>
                             <constraint firstItem="5qi-oI-txi" firstAttribute="centerX" secondItem="hqC-08-sza" secondAttribute="centerX" id="OPf-KO-dHw"/>
@@ -369,6 +396,7 @@
                             <constraint firstItem="XCR-5P-zgI" firstAttribute="centerX" secondItem="i6P-XO-cCO" secondAttribute="centerX" id="Rnf-nf-tcT"/>
                             <constraint firstItem="wH3-jN-a3f" firstAttribute="centerY" secondItem="eNc-G4-Mad" secondAttribute="centerY" id="YOS-yx-mH3"/>
                             <constraint firstItem="XCR-5P-zgI" firstAttribute="centerY" secondItem="i6P-XO-cCO" secondAttribute="centerY" id="jb4-ng-BMH"/>
+                            <constraint firstItem="mSi-cp-gOy" firstAttribute="top" secondItem="zJu-bl-pDI" secondAttribute="bottom" constant="-171" id="l2l-Pk-JJw"/>
                             <constraint firstItem="0tc-Iv-dMN" firstAttribute="centerY" secondItem="lAg-ah-tKz" secondAttribute="centerY" id="vp3-TC-GOU"/>
                             <constraint firstItem="5qi-oI-txi" firstAttribute="centerY" secondItem="hqC-08-sza" secondAttribute="centerY" id="wOd-qH-09z"/>
                         </constraints>
@@ -377,6 +405,12 @@
                     <navigationItem key="navigationItem" title="Tips N Stuff" id="88h-vS-XLd">
                         <barButtonItem key="backBarButtonItem" title="Back" id="7TQ-Cj-3Ul"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="calBtn" destination="i6P-XO-cCO" id="h3n-TO-tdF"/>
+                        <outlet property="calcBtn" destination="eNc-G4-Mad" id="EmN-zd-R3D"/>
+                        <outlet property="performBtn" destination="7uz-HY-pXv" id="wP6-yu-vKV"/>
+                        <outlet property="workBtn" destination="lAg-ah-tKz" id="GfD-1X-NH0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jux-Y5-4t1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -457,10 +491,10 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ead-Zy-Tap">
-                                <rect key="frame" x="0.0" y="214" width="375" height="159"/>
+                                <rect key="frame" x="0.0" y="214" width="375" height="208"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgE-Nb-rJ0">
-                                        <rect key="frame" x="116" y="0.0" width="142" height="158"/>
+                                        <rect key="frame" x="116" y="0.0" width="142" height="207"/>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OiS-wi-Bnc">
                                                 <rect key="frame" x="-129" y="0.0" width="375" height="162"/>
@@ -863,7 +897,7 @@
         <scene sceneID="e0b-wM-367">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UCx-vO-5ZH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="nrN-Kd-Qg6"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="nrN-Kd-Qg6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5Xv-wX-t5j">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -882,13 +916,14 @@
     <resources>
         <image name="calc" width="25" height="25"/>
         <image name="calendar" width="24" height="24"/>
+        <image name="home" width="256" height="256"/>
         <image name="performance" width="24" height="24"/>
         <image name="work" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BYa-Ys-kXd"/>
-        <segue reference="fCL-Tl-1Us"/>
-        <segue reference="LDh-3V-elH"/>
-        <segue reference="0Cc-X0-MdK"/>
+        <segue reference="fix-Vf-yfZ"/>
+        <segue reference="Z10-LJ-SNI"/>
+        <segue reference="7E5-EL-Wox"/>
+        <segue reference="h3C-ho-w3e"/>
     </inferredMetricsTieBreakers>
 </document>
