@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dNG-gQ-0yM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dNG-gQ-0yM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -209,7 +209,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ohq-xG-dyf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Tip Calendar" id="S7H-8G-Qa2"/>
+                    <tabBarItem key="tabBarItem" title="Tip Calendar" image="calendar" selectedImage="calendar" id="S7H-8G-Qa2"/>
                     <connections>
                         <outlet property="DateField" destination="jm2-nJ-2qS" id="1tl-nr-KJm"/>
                         <outlet property="NotesField" destination="9K7-7X-fZ8" id="2oQ-fR-H3z"/>
@@ -232,54 +232,146 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6P-XO-cCO">
-                                <rect key="frame" x="72" y="169" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Tip Calendar">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Nlr-cu-QOZ" kind="show" id="h3C-ho-w3e"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAg-ah-tKz">
-                                <rect key="frame" x="207" y="300" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Work Log">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="6Dx-hz-CWD" kind="show" id="Z10-LJ-SNI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNc-G4-Mad">
-                                <rect key="frame" x="207" y="169" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Tip Calculator">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Dyg-lt-zCV" kind="show" id="fix-Vf-yfZ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uz-HY-pXv">
-                                <rect key="frame" x="72" y="300" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Perform Log">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="9zv-Oi-pQB" kind="show" id="7E5-EL-Wox"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="5qi-oI-txi">
+                                <rect key="frame" x="20" y="166" width="335" height="335"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="zJu-bl-pDI">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="150"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YlE-fj-PDh">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6P-XO-cCO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                        <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                        <state key="normal" title="Tip Calendar">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <segue destination="Nlr-cu-QOZ" kind="show" id="h3C-ho-w3e"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="TNr-GE-4Ad"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="cwQ-Do-nas"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="D41-ir-xTG">
+                                                <rect key="frame" x="185" y="0.0" width="150" height="150"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNc-G4-Mad">
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                        <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                        <state key="normal" title="Tip Calculator">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="Dyg-lt-zCV" kind="show" id="fix-Vf-yfZ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="2Qx-Ow-Y4r"/>
+                                                    <constraint firstAttribute="width" constant="150" id="xlm-gQ-Rnb"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="zQU-kH-fBZ">
+                                        <rect key="frame" x="0.0" y="185" width="335" height="150"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="44O-1W-s5m">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uz-HY-pXv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                        <state key="normal" title="Perform Log">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="9zv-Oi-pQB" kind="show" id="7E5-EL-Wox"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="mLR-AD-ank"/>
+                                                    <constraint firstAttribute="width" constant="150" id="xXI-sB-8ff"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lct-PS-gK9">
+                                                <rect key="frame" x="185" y="0.0" width="150" height="150"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAg-ah-tKz">
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                        <state key="normal" title="Work Log">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="6Dx-hz-CWD" kind="show" id="Z10-LJ-SNI"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="6ca-f0-EAx"/>
+                                                    <constraint firstAttribute="width" constant="150" id="ldD-Ub-xON"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calc" translatesAutoresizingMaskIntoConstraints="NO" id="wH3-jN-a3f">
+                                <rect key="frame" x="252.5" y="213.5" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="p7z-bF-45L"/>
+                                    <constraint firstAttribute="width" constant="55" id="u5W-Do-XsX"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="performance" translatesAutoresizingMaskIntoConstraints="NO" id="pdG-jr-Vfv">
+                                <rect key="frame" x="67.5" y="398.5" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="HfK-qm-dSy"/>
+                                    <constraint firstAttribute="width" constant="55" id="Yr7-04-sCZ"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="XCR-5P-zgI">
+                                <rect key="frame" x="67.5" y="213.5" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="QwL-nT-BM6"/>
+                                    <constraint firstAttribute="height" constant="55" id="SnZ-8s-i8l"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="work" translatesAutoresizingMaskIntoConstraints="NO" id="0tc-Iv-dMN">
+                                <rect key="frame" x="252.5" y="398.5" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="Lo2-wb-1nJ"/>
+                                    <constraint firstAttribute="width" constant="55" id="p5W-Bf-a2v"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0tc-Iv-dMN" firstAttribute="centerX" secondItem="lAg-ah-tKz" secondAttribute="centerX" id="2pm-WM-lnt"/>
+                            <constraint firstItem="wH3-jN-a3f" firstAttribute="centerX" secondItem="eNc-G4-Mad" secondAttribute="centerX" id="FhL-vl-LOV"/>
+                            <constraint firstItem="pdG-jr-Vfv" firstAttribute="centerY" secondItem="7uz-HY-pXv" secondAttribute="centerY" id="Heo-85-iUd"/>
+                            <constraint firstItem="5qi-oI-txi" firstAttribute="centerX" secondItem="hqC-08-sza" secondAttribute="centerX" id="OPf-KO-dHw"/>
+                            <constraint firstItem="pdG-jr-Vfv" firstAttribute="centerX" secondItem="7uz-HY-pXv" secondAttribute="centerX" id="Q7y-ek-53Y"/>
+                            <constraint firstItem="XCR-5P-zgI" firstAttribute="centerX" secondItem="i6P-XO-cCO" secondAttribute="centerX" id="Rnf-nf-tcT"/>
+                            <constraint firstItem="wH3-jN-a3f" firstAttribute="centerY" secondItem="eNc-G4-Mad" secondAttribute="centerY" id="YOS-yx-mH3"/>
+                            <constraint firstItem="XCR-5P-zgI" firstAttribute="centerY" secondItem="i6P-XO-cCO" secondAttribute="centerY" id="jb4-ng-BMH"/>
+                            <constraint firstItem="0tc-Iv-dMN" firstAttribute="centerY" secondItem="lAg-ah-tKz" secondAttribute="centerY" id="vp3-TC-GOU"/>
+                            <constraint firstItem="5qi-oI-txi" firstAttribute="centerY" secondItem="hqC-08-sza" secondAttribute="centerY" id="wOd-qH-09z"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Wtm-pE-vbS"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tips N Stuff" id="88h-vS-XLd">
@@ -365,10 +457,10 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ead-Zy-Tap">
-                                <rect key="frame" x="0.0" y="214" width="375" height="208"/>
+                                <rect key="frame" x="0.0" y="214" width="375" height="159"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgE-Nb-rJ0">
-                                        <rect key="frame" x="116" y="0.0" width="142" height="207"/>
+                                        <rect key="frame" x="116" y="0.0" width="142" height="158"/>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OiS-wi-Bnc">
                                                 <rect key="frame" x="-129" y="0.0" width="375" height="162"/>
@@ -407,7 +499,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WSC-db-YCU"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Performance Log" id="gX1-Lt-7b5"/>
+                    <tabBarItem key="tabBarItem" title="Performance Log" image="performance" selectedImage="performance" id="gX1-Lt-7b5"/>
                     <connections>
                         <outlet property="bkgTextView" destination="wgE-Nb-rJ0" id="s8I-t4-Zja"/>
                         <outlet property="dropDown" destination="OiS-wi-Bnc" id="pSv-Dq-QSZ"/>
@@ -576,7 +668,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cuw-Fu-HeE"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Work Log" id="1Fh-Ft-h4J"/>
+                    <tabBarItem key="tabBarItem" title="Work Log" image="work" selectedImage="work" id="1Fh-Ft-h4J"/>
                     <connections>
                         <outlet property="expectedPay" destination="Gq1-JQ-NLK" id="zNf-26-lhw"/>
                         <outlet property="shiftHours" destination="uUX-e2-ODR" id="xlm-Rc-kst"/>
@@ -729,7 +821,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="z3y-Zd-d7f"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Tip Calculator" id="6zL-5j-PCp"/>
+                    <tabBarItem key="tabBarItem" title="Tip Calculator" image="calc" selectedImage="calc" id="6zL-5j-PCp"/>
                     <connections>
                         <outlet property="CustomTipPercentageSlider" destination="2cf-XT-dwa" id="4Zh-wg-X0M"/>
                         <outlet property="CustomTippercentage2" destination="vLK-WL-fQ3" id="ctK-JD-P7R"/>
@@ -787,10 +879,16 @@
             <point key="canvasLocation" x="900.79999999999995" y="-101.64917541229386"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="calc" width="25" height="25"/>
+        <image name="calendar" width="24" height="24"/>
+        <image name="performance" width="24" height="24"/>
+        <image name="work" width="24" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fix-Vf-yfZ"/>
-        <segue reference="Z10-LJ-SNI"/>
-        <segue reference="7E5-EL-Wox"/>
-        <segue reference="h3C-ho-w3e"/>
+        <segue reference="BYa-Ys-kXd"/>
+        <segue reference="fCL-Tl-1Us"/>
+        <segue reference="LDh-3V-elH"/>
+        <segue reference="0Cc-X0-MdK"/>
     </inferredMetricsTieBreakers>
 </document>
