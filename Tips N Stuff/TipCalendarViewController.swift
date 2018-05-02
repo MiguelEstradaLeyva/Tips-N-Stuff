@@ -17,9 +17,12 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tipAmount: UITextField!
     @IBOutlet weak var DateField: UITextField!
     @IBOutlet weak var NotesField: UITextField!
+
+    var yearlyTipAmount = 0.0
     
     // a UI representation for the user to pick a date. This way the user cannot mess anything up
     let picker = UIDatePicker()
+    let defaults = UserDefaults.standard
     
     func createDatePicker(){
         
@@ -61,13 +64,12 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         let month: String = (String)(calendar.component(Calendar.Component.month, from: d))
         let year: String = (String)(calendar.component(Calendar.Component.year, from: d))
         let dateKey: String = year + "/" + month + "/" + day
-        //let tipAt: Double = (Double)(self.tipAmount.text!)!
         
         if (money.keys.contains(dateKey)){
             let orgTip:Double = money[dateKey]!
             todayTipField.text = (String)(orgTip)
-            // getTipAmountDay()
         }
+        
         DateField.text = "\(picker.date)"
         self.view.endEditing(true)
     }
@@ -78,20 +80,7 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         // look at alage app to check fields 1st before you accept them add alert screens for errors
         
         setupAddTargetIsNotEmptyTextFields()
-        /*
-         if((jobField.text?.isEmpty)! && (DateField.text?.isEmpty)!){
-         cal.isEnabled = false
-         let alert = UIAlertController(title: "Please Fill Out all Fields", message: "There must be   Job tiltle and a date before continuing.", preferredStyle: .alert)
-         
-         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-         self.present(alert, animated: true)
-         
-         }
-         else{
-         cal.isEnabled = true
-         }
-         */
-        
+
         let d = picker.date
         let calendar = NSCalendar.current
         let day: String = (String)(calendar.component(Calendar.Component.day, from: d))
@@ -99,40 +88,46 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         let year: String = (String)(calendar.component(Calendar.Component.year, from: d))
         let dateKey: String = year + "/" + month + "/" + day
         let tipAt: Double
+        
+        // Re-adding money data in userdefaults otherwise money gets cleared 
+        for (k,v) in defaults.dictionaryRepresentation(){
+            money[k] = v as? Double
+        }
+        
         if(tipAmount.text?.isEmpty == true){
             tipAt = 0.0
         }
         else{
             tipAt = (Double)(self.tipAmount.text!)!
+            
+            // Set the yearlyTipAmount to the user entered amount
+            yearlyTipAmount = tipAt
         }
         
         if !(money.keys.contains(dateKey)){
-            //money.updateValue(tipAt, forKey: dateKey)
             money[dateKey] = tipAt
             todayTipField.text = (String)(tipAt)
+            
+            // Store the new date with key-value into userdefaults
+            defaults.set(tipAt, forKey: dateKey)
         }
         else{
             let orgTip:Double = money[dateKey]!
             todayTipField.text = (String)(orgTip)
+            
+            // Store the new date with key-value into userdefaults
+            defaults.set(orgTip, forKey: dateKey)
             getTipAmountDay()
         }
+        
+        // Sets the yearlyTipAmount after getting the data finalized
+        defaults.set(yearlyTipAmount, forKey: "yearlyTip")
         
         // All fields in the calendar need to be strings
         let titles: String = "Job Completed: " + jobField.text!
         let tip: String = "Tip amount: $" + tipAmount.text!
         let notes: String = "\nAdditional Notes: " + NotesField.text!
         
-        
-        
-        // make a dictionary that holds dates(key) with tip totals (value)
-        // grab the date then add a total add put it in the today's tip total field
-        // might wanna make another method to do this and just call it from this method
-        // dayTot(date: date 2, Double: todaytotal)
-        // check if date is in dictionary if is add to it else add the date to the dict. and
-        // start a new total
-        //var t = Double(tipAmount.text!)
-        //todaytotal += t!
-        //todayTipField.text = String(todaytotal)
         
         
         let eventStore: EKEventStore = EKEventStore()
@@ -184,7 +179,6 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
     var yeartotal = 0.0;
     
     var money = [String: Double]()
-    
     // UserDefaults.standard.set(money, forKey: "money")
     
     func getTipAmountDay(){
@@ -194,13 +188,33 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         let month: String = (String)(calendar.component(Calendar.Component.month, from: d))
         let year: String = (String)(calendar.component(Calendar.Component.year, from: d))
         let dateKey: String = year + "/" + month + "/" + day
-        //var day: String = picker.date.description
+
+        
         if money.keys.contains(dateKey){
+            
             let orgTip:Double = money[dateKey]!
             let newTip: Double = (Double)(tipAmount.text!)!
             let totalTip = orgTip + newTip
+            
+            // Get the new updated tip and store it into yearlyTipAmount
+            yearlyTipAmount = totalTip
+            
+            // Update the value of the totalTip for the current date
             money.updateValue(totalTip, forKey: dateKey)
+            
+            // Set the totalTip for the current date
+            defaults.set(totalTip, forKey: dateKey)
+            
             todayTipField.text = (String)(totalTip)
+            
+            // Set the dictionary for money
+            defaults.set(money, forKey: "money")
+            
+            // Set the yearlyTipAmount
+            defaults.set(yearlyTipAmount, forKey: "yearlyTip")
+            
+            // Change the textfield to the current yearlyTipAmount
+            yearsTipField.text = yearlyTipAmount.toString()
         }
     }
     
@@ -208,16 +222,21 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         tipAmount.delegate = self
         tipAmount.keyboardType = .numbersAndPunctuation
-        //setupAddTargetIsNotEmptyTextFields()
         cal.isEnabled =  false
         createDatePicker()
-        UserDefaults.standard.set(money, forKey: "money")
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // This method is used for updating the textfields with the appropriate values after the user
+    // leaves the screen and comes back
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let temp = defaults.double(forKey: "yearlyTip")
+        yearsTipField.text = temp.toString()
     }
     
     // this will ensure that the user has to use the date picker and cant input wrong dates
@@ -270,14 +289,4 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         // enable okButton if all conditions are met
         cal.isUserInteractionEnabled = false
     }
-    
-    /*
-     // MARK: - Navigation
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

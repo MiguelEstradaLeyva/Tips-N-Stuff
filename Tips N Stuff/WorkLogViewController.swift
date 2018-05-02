@@ -27,11 +27,13 @@ class WorkLogViewController: UIViewController, UITextFieldDelegate {
     @IBAction func calculatePay(_ sender: Any) {
         
         if(shiftHours.text?.isEmpty == true || wageHours.text?.isEmpty == true) {
+            
             let alert = UIAlertController(title: "Error: Missing fields", message: "Please fill out both fields before calculating pay", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alert.addAction(cancel)
             present(alert, animated: true, completion: nil)
-            print("check complete")
+            
+            //print("check complete")
         } else {
         
         // Converts the text to double to calculate user paycheck
@@ -100,6 +102,7 @@ class WorkLogViewController: UIViewController, UITextFieldDelegate {
             let allowedCharacters = CharacterSet(charactersIn:".0123456789").inverted
             let components = string.components(separatedBy: allowedCharacters)
             let filtered = components.joined(separator: "")
+            
             // only want to allow 1 decimal point in the string so we can convert it to a double
             if (textField.text?.contains("."))!, string.contains(".") {
                 return false
