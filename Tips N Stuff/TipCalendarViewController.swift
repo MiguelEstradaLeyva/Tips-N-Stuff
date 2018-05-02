@@ -24,7 +24,7 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
     let picker = UIDatePicker()
     let defaults = UserDefaults.standard
     
-    func createDatePicker(){
+    func createDatePicker(){ 
         
         //tool bar
         let toolbar = UIToolbar()
