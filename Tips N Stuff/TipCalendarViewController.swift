@@ -163,8 +163,10 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
                 let event: EKEvent = EKEvent (eventStore: eventStore)
                 // adding user input fields to the actual calendar
                 event.title = titles
+                DispatchQueue.main.async{
                 event.startDate = self.picker.date
                 event.endDate = self.picker.date
+                }
                 event.notes = tip + notes
                 event.calendar = eventStore.defaultCalendarForNewEvents
                 do {
@@ -188,8 +190,12 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
     func gotoAppleCalendar(date: NSDate) {
         let interval = date.timeIntervalSinceReferenceDate
         // use a system call to notify Tips N stuff to go to the calendar app
-        let url = NSURL(string: "calshow:\(interval)")!
-        UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        
+        DispatchQueue.main.async {
+            let url = NSURL(string: "calshow:\(interval)")!
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        }
+       
     }
     
     //update the year tip amount after any time a user adds new tips for a given date
