@@ -57,7 +57,7 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         tipAmount.delegate = self
         tipAmount.keyboardType = .numbersAndPunctuation
-        cal.isEnabled =  false
+        cal.isEnabled =  true
         createDatePicker()
     }
     
@@ -88,8 +88,10 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
     // they can refer to it at a later date. They will need a date and a tip to function
     @IBAction func pushToCalendar(_ sender: UIButton) {
         
-        setupAddTargetIsNotEmptyTextFields()        // verify the textfields are filled out
-        
+       // verify the textfields are filled out
+        if(!check()){
+            return
+        }
         let temp = defaults.double(forKey: "testing")
         
         // if it is the users first time there will be nothing in the db so set a 0 to start it off
@@ -117,6 +119,7 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         }
         
         // if the dictionary does not have the date in it, make it a new key and add total day tips up
+        
         if !(money.keys.contains(dateKey)){
             money[dateKey] = tipAt                  // date now has a tip value in the dictionary
             todayTipField.text = (String)(tipAt)    // display the tip on screen
@@ -125,7 +128,7 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
             // Store the new date with key-value into userdefaults
             defaults.set(tipAt, forKey: dateKey)
         }
-            
+        
         // The date already is in the dictionary so retrieve the old tip value
         // and add the new tip value to it ==> new tip total for that date
         else{
@@ -250,20 +253,12 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func setupAddTargetIsNotEmptyTextFields() {
-        
-        if(!((jobField.text?.isEmpty)! && (tipAmount.text?.isEmpty)! && (DateField.text?.isEmpty)!)){
-            cal.isEnabled = true
-        }
-        else{
-            cal.isEnabled = false
-        }
-    }
+
     
     // when the user presses done after they have choosen a date it locks it in and goes
     // back to the main screen. IE the date picker is out of view on the screen
     @objc func donePressed(){
-        cal.isEnabled = true
+        // DONT ENABLE THE BUTTON
         // get all the date elements so we can store it for the dictionary money. Dates are keys
         let dateKey = dateKeyGetter()
         // if the date is already in the dictionary put it in the out put text field for day amount
@@ -276,36 +271,19 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    @objc func textFieldsIsNotEmpty(sender: UITextField) {
-        
-        sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
-        
-        guard
-            let job = jobField.text, !job.isEmpty,
-            let tip = tipAmount.text, !tip.isEmpty,
-            let dt = DateField.text, !dt.isEmpty
-            
-            else
-        {
-            cal.isUserInteractionEnabled = true
-            return
-        }
-        // enable okButton if all conditions are met
-        cal.isUserInteractionEnabled = false
-    }
+
     
     // ensure that the user has entered in the required fields. If they did enable the button
-    func check(sender: UITextField){
-        if((jobField.text?.isEmpty)! || (DateField.text?.isEmpty)!){
-            cal.isEnabled = false
-            let alert = UIAlertController(title: "Please Fill Out all Fields", message: "There must be   Job tiltle and a date before continuing.", preferredStyle: .alert)
+    func check() -> Bool{
+        if((jobField.text?.isEmpty)! || (DateField.text?.isEmpty)! || (tipAmount.text?.isEmpty)!){
+            let alert = UIAlertController(title: "Please Fill Out all Fields", message: "There must be   Job tiltle, tip amount, and a date before continuing.", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
             self.present(alert, animated: true)
-            
+            return false
         }
         else{
-            cal.isEnabled = true
+            return true
         }
     }
 }
