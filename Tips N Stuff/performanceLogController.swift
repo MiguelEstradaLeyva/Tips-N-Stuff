@@ -3,7 +3,7 @@
 //  Tips N Stuff
 //
 //  Created by Don Ostergaard on 4/23/18.
-//  Copyright © 2018 Don Ostergaardz. All rights reserved.
+//  Copyright © 2018 Don Ostergaard. All rights reserved.
 //
 
 import UIKit
@@ -125,6 +125,7 @@ class performanceLogController: UIViewController,UIPickerViewDelegate, UIPickerV
         return true
     }
     
+    // so the log will never be nil
     func start(){
         defaults.set("Start:", forKey:"post")
     }
@@ -167,6 +168,8 @@ class performanceLogController: UIViewController,UIPickerViewDelegate, UIPickerV
     override func viewDidAppear(_ animated: Bool) {
         let temp = defaults.string(forKey: "post")
         serverField.text = temp
+        //serverField.endFloatingCursor()
+        //serverField.
     }
 }
 
