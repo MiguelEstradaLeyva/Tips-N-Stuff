@@ -5,12 +5,18 @@
 //  Created by Don Ostergaard on 4/23/18.
 //  Copyright © 2018 Don Ostergaardz. All rights reserved.
 //
-//  hate git here
+
 import UIKit
 
 class performanceLogController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     @IBOutlet weak var taskTextbox: UITextField!
     
+    @IBOutlet weak var postBtn: UIButton!
+    
+    // server will post tasks and how many tables they served
+    @IBOutlet weak var serverField: UITextView!
+    
+    // textfield with how many tables that have been served
     @IBOutlet weak var servedField: UITextField!
     
     @IBOutlet weak var bkgTextView: UIView!
@@ -21,15 +27,29 @@ class performanceLogController: UIViewController,UIPickerViewDelegate, UIPickerV
     
     var BeginingText:String = ""
     
-    var list = ["Served Food", "Cooked Food", "Clean Dishes", "Clean Tables", "Clean Kitchen",
+    var tablesServed:String = ""
+    
+    let defaults = UserDefaults.standard
+    
+    // The picker list that a user can pick jobs from
+    var list = ["N/A", "Served Food", "Cooked Food", "Clean Dishes", "Clean Tables", "Clean Kitchen",
                 "Made Drinks", "Bar Tended", "Refills", "Seated Guests", "Meetings", "Did Garbage",
                 "Cleaned Bathrooms"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // hide the picker until the user clicks the textField
         self.dropDown.isHidden = true
         mainBkgView.isHidden = true
         bkgTextView.isHidden = true
+        
+        // make keyboard go away when user is done typeing
+         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+        
+        self.servedField.delegate = self
+        self.taskTextbox.delegate = self
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -38,11 +58,12 @@ class performanceLogController: UIViewController,UIPickerViewDelegate, UIPickerV
         // Dispose of any resources that can be recreated.
     }
     
-    
+    // user can only add one job at a time
     public func numberOfComponents(in pickerView: UIPickerView) -> Int{
         return 1
         
     }
+    
     
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
         
@@ -50,6 +71,7 @@ class performanceLogController: UIViewController,UIPickerViewDelegate, UIPickerV
         
     }
     
+    // return the job the user has picked from the job list picker obj
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         self.view.endEditing(true)
@@ -57,14 +79,16 @@ class performanceLogController: UIViewController,UIPickerViewDelegate, UIPickerV
         
     }
     
+    //  save jobs in the appropriate fields
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        // allows the user to add multiple tasks to the textField
+        // allows the user to add multiple tasks to the textField if the field is not empty
         if !((taskTextbox.text?.isEmpty)!){
             self.dropDown.isHidden = true
             mainBkgView.isHidden = true
             bkgTextView.isHidden = true
             taskTextbox.text! += ", " + self.list[row]
+            
         }
         else{
             self.taskTextbox.text = self.list[row]
@@ -77,6 +101,7 @@ class performanceLogController: UIViewController,UIPickerViewDelegate, UIPickerV
         
     }
     
+    // user has clicked the textfield now make the picker come up
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         if textField == self.taskTextbox {
@@ -89,17 +114,48 @@ class performanceLogController: UIViewController,UIPickerViewDelegate, UIPickerV
         
     }
     
-    // this will ensure that the user has to use the date picker and cant input wrong dates
+    // this will ensure that the user has to use the date picker and cant input wrong dates (only #'s)
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == servedField{
+        if (textField == servedField){
             // only allow digits in the text field
             let allowedCharacters = CharacterSet(charactersIn:"0123456789").inverted
             let components = string.components(separatedBy: allowedCharacters)
             let filtered = components.joined(separator: "")
-            // only want to allow 1 decimal point in the string so we can convert it to a double
-            
             return string == filtered
         }
         return true
+    }
+    
+    // this button will allow the servers to post their work to their manager
+    @IBAction func postToFieldBtn(_ sender: Any) {
+        // only bring in old previous saved data into the textview once
+        var count = 0
+        
+        // get the saved tasks from a previous session
+        var temp = ""
+        var formatedString: String = ""
+        temp = defaults.string(forKey: "post")!
+        
+        if !(temp == "" && count == 0) {
+            serverField.text = temp + "\n"
+            count += 1
+        }
+        
+        // how many tables served saved into temp variable for changes
+        tablesServed = servedField.text! + " "
+         formatedString += "Tables Served: " + tablesServed + "\nTasks Done: " + taskTextbox.text! + "\n"
+        
+        // post to "server"
+        serverField.text! += formatedString
+        let all = serverField.text
+        
+        //save the post to the device
+        defaults.set(all,forKey: "post")
+    }
+    
+    // show the user all past posts of their work
+    override func viewDidAppear(_ animated: Bool) {
+        let temp = defaults.string(forKey: "post")
+        serverField.text = temp
     }
 }

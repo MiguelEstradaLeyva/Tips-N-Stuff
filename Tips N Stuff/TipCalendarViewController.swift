@@ -168,7 +168,7 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
         let interval = date.timeIntervalSinceReferenceDate
         // use a system call to notify Tips N stuff to go to the calendar app
         let url = NSURL(string: "calshow:\(interval)")!
-        UIApplication.shared.openURL(url as URL)
+        UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
     }
     
     
