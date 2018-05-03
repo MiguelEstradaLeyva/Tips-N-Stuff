@@ -42,9 +42,8 @@ class performanceLogController: UIViewController,UIPickerViewDelegate, UIPickerV
         self.dropDown.isHidden = true
         mainBkgView.isHidden = true
         bkgTextView.isHidden = true
-        
         // make keyboard go away when user is done typeing
-         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         
         self.servedField.delegate = self
         self.taskTextbox.delegate = self
@@ -126,24 +125,35 @@ class performanceLogController: UIViewController,UIPickerViewDelegate, UIPickerV
         return true
     }
     
+    func start(){
+        defaults.set("Start:", forKey:"post")
+    }
+    
     // this button will allow the servers to post their work to their manager
     @IBAction func postToFieldBtn(_ sender: Any) {
+       
         // only bring in old previous saved data into the textview once
         var count = 0
-        
+        //here
         // get the saved tasks from a previous session
-        var temp = ""
+        //var temp = ""
         var formatedString: String = ""
-        temp = defaults.string(forKey: "post")!
         
+        var temp = defaults.string(forKey: "post")
+        
+        if(temp == nil){
+            defaults.set("Log:", forKey:"post")
+            temp = defaults.string(forKey: "post")
+        }
+        //look here
         if !(temp == "" && count == 0) {
-            serverField.text = temp + "\n"
+            serverField.text = temp! + "\n"
             count += 1
         }
         
         // how many tables served saved into temp variable for changes
         tablesServed = servedField.text! + " "
-         formatedString += "Tables Served: " + tablesServed + "\nTasks Done: " + taskTextbox.text! + "\n"
+        formatedString += "Tables Served: " + tablesServed + "\nTasks Done: " + taskTextbox.text! + "\n"
         
         // post to "server"
         serverField.text! += formatedString
@@ -159,3 +169,4 @@ class performanceLogController: UIViewController,UIPickerViewDelegate, UIPickerV
         serverField.text = temp
     }
 }
+
