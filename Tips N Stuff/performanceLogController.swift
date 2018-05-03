@@ -32,7 +32,7 @@ class performanceLogController: UIViewController,UIPickerViewDelegate, UIPickerV
     let defaults = UserDefaults.standard
     
     // The picker list that a user can pick jobs from
-    var list = ["N/A", "Served Food", "Cooked Food", "Clean Dishes", "Clean Tables", "Clean Kitchen",
+    var list = ["Served Food", "Cooked Food", "Clean Dishes", "Clean Tables", "Clean Kitchen",
                 "Made Drinks", "Bar Tended", "Refills", "Seated Guests", "Meetings", "Did Garbage",
                 "Cleaned Bathrooms"]
     
