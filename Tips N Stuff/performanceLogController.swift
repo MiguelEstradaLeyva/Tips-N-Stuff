@@ -132,7 +132,16 @@ class performanceLogController: UIViewController,UIPickerViewDelegate, UIPickerV
     
     // this button will allow the servers to post their work to their manager
     @IBAction func postToFieldBtn(_ sender: Any) {
-       
+        if(servedField.text?.isEmpty == true || taskTextbox.text?.isEmpty == true) {
+            
+            let alert = UIAlertController(title: "Error: Missing fields", message: "Please fill out both fields before posting to server", preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(cancel)
+            present(alert, animated: true, completion: nil)
+            
+            //print("check complete")
+        } else {
+
         // only bring in old previous saved data into the textview once
         var count = 0
         //here
@@ -162,6 +171,7 @@ class performanceLogController: UIViewController,UIPickerViewDelegate, UIPickerV
         
         //save the post to the device
         defaults.set(all,forKey: "post")
+        }
     }
     
     // show the user all past posts of their work
