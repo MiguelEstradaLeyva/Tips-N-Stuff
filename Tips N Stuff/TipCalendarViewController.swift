@@ -282,7 +282,7 @@ class TipCalendarViewController: UIViewController, UITextFieldDelegate {
     // ensure that the user has entered in the required fields. If they did enable the button
     func check() -> Bool{
         if((jobField.text?.isEmpty)! || (DateField.text?.isEmpty)! || (tipAmount.text?.isEmpty)!){
-            let alert = UIAlertController(title: "Please Fill Out all Fields", message: "There must be   Job tiltle, tip amount, and a date before continuing.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Please fill out all fields", message: "There must be a Job title, tip amount, and a date before continuing.", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
             self.present(alert, animated: true)
