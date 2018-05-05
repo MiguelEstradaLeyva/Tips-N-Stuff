@@ -71,13 +71,15 @@ class TipCalculator: UIViewController, UITextFieldDelegate {
                 // calculate and display the 15% tip and total
                 let fifteenTip = tipAmount * decimal15Percent
                 TipFiftheenLabel.text = TipCalculator.formatAsCurrency(number: fifteenTip)
-                TotalFifteenLabel.text =
+                //changing TotalFifteenlabel to totalcustomlabel
+                TotalCustomLabel.text =
                     TipCalculator.formatAsCurrency(number: tipAmount + fifteenTip)
             }
             // calculate custom tip and display custom tip and total
             let customTip = tipAmount * customPercent
             TipCustomLabel.text = TipCalculator.formatAsCurrency(number: customTip)
-            TotalCustomLabel.text =
+            //changing TotalCustomLabel to TotalFifteenLabel
+            TotalFifteenLabel.text =
                 TipCalculator.formatAsCurrency(number: tipAmount + customTip)
         }
         else { // clear all Labels
